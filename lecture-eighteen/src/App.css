@@ -1,0 +1,22 @@
+.section-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 40px;
+    margin: 30px;
+    gap: 20px;
+}
+.to-do-container,
+.done-container {
+    padding: 5px 20px;
+    width: 50%;
+    border: 3px solid lightblue;
+}
+
+.todo-element-wrapper,
+.done-element-wrapper {
+    border: 1px solid lightcoral;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 5px;
+}
