@@ -1,12 +1,16 @@
 import ToDoElement from "./ToDoElement";
 import DoneElement from "./DoneElement";
 
-const ToDoSection = () => {
+const ToDoSection = (props) => {
     return (
         <div className="section-container">
                 <div className="to-do-container">
                     <h1 className="to-do-header">To Do: </h1>
-                    <ToDoElement />
+                    <ToDoElement value={props.initValue}/>
+
+                    <button>Add Task</button>
+                    <br />
+                    <input type="text" value={props.initValue} onChange={props.onChange}/>
                 </div>
                 <div className="done-container">
                     <h1 className="done-header">Done: </h1>
