@@ -8,7 +8,7 @@ class App extends Component {
 
   state = {
     taskNames: [{taskName: 'task1'}, {taskName: 'task2'}],
-    doneTaskNames: [{taskNameDone: ''}]
+    doneTaskNames: []
     // taskNames: 'task1'
   }
 
@@ -27,15 +27,31 @@ class App extends Component {
 
   }
 
-  removeTask = (task, index) => {
+  doneTask = (task, index) => {
     const taskNames = [...this.state.taskNames];
     const doneTaskNames = [...this.state.doneTaskNames];
     taskNames.splice(index, 1);
     doneTaskNames.push({taskNameDone: task});
     this.setState({taskNames});
     this.setState({doneTaskNames});
+  }
+
+  doAgain = (task, index) => {
+    const taskNames = [...this.state.taskNames];
+    const doneTaskNames = [...this.state.doneTaskNames];
+    doneTaskNames.splice(index, 1);
+    this.setState({doneTaskNames});
+    taskNames.push({taskName: task});
+    this.setState({taskNames});
 
   }
+
+  deleteTask = (index) => {
+    const doneTaskNames = [...this.state.doneTaskNames];
+    doneTaskNames.splice(index, 1);
+    this.setState({doneTaskNames});
+  }
+
 
 
   render() {
@@ -49,7 +65,7 @@ class App extends Component {
 
                     {this.state.taskNames.map((task, index) => {
                       return (
-                        <ToDoElement key={index} value={task.taskName} onChange={(e) => this.onChange(e, index)} removeTask={()=> this.removeTask(task.taskName,index)}/>
+                        <ToDoElement key={index} value={task.taskName} onChange={(e) => this.onChange(e, index)} doneTask={()=> this.doneTask(task.taskName,index)}/>
                       )
 
                     })}
@@ -62,7 +78,7 @@ class App extends Component {
                     <h1 className="done-header">Done: </h1>
                     {this.state.doneTaskNames.map((task, index)=>{
                       return (
-                        <DoneElement key={index} value={task.taskNameDone}/>
+                        <DoneElement key={index} value={task.taskNameDone} doAgain={() => this.doAgain(task.taskNameDone ,index)} deleteTask={() => this.deleteTask(index)}/>
                       )
                     })}
                 </div>
