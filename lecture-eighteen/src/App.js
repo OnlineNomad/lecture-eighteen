@@ -65,7 +65,12 @@ class App extends Component {
 
                     {this.state.taskNames.map((task, index) => {
                       return (
-                        <ToDoElement key={index} value={task.taskName} onChange={(e) => this.onChange(e, index)} doneTask={()=> this.doneTask(task.taskName,index)}/>
+                        <ToDoElement 
+                                    key={index} 
+                                    value={task.taskName} 
+                                    onChange={this.onChange} 
+                                    doneTask={this.doneTask}
+                                    index={index}/>
                       )
 
                     })}
