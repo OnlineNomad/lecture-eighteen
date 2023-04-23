@@ -1,7 +1,7 @@
-const DoneElement = () => {
+const DoneElement = (props) => {
     return (
         <div className="done-element-wrapper">
-            <p className="done-task">Homework</p>
+            <p className="done-task">{props.value}</p>
             <button className="done-add-button">Do again</button>
         </div>
     )
